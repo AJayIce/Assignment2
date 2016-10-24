@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Monsieur Cog</title>
+    </head>
+
+    <style>
+        .imageThumb {
+            display: inline-block;
+            position:relative;
+            left: 1.5%;
+            top: 15%;
+            border-radius:100px;
+            height:70%;
+            width:12%;
+        }
+        
+        #head {
+            position: absolute;
+            left: 70px;
+            top: 15px;
+        }
+        #url {
+            position:absolute;
+            left: 70px;
+            top: 45px;
+        }
+        #msg {
+            position:absolute;
+            left:70px;
+            top: 75px;
+        }
+        #create {
+            position: absolute;
+            left: 5px;
+            top: 15px;
+        }
+        #remove{
+            position:absolute;
+            right: 15px;
+            top:15px;
+        }
+        #toaster{
+            position:fixed;
+            width: 98vw;
+            height: 10vh;
+            text-align: center;
+            top: 90vh;
+            right: 1vw;
+            left:1vw;
+            font-size: 30px;
+            transition-duration: 4s;
+            z-index: 10;
+        }
+    </style>
+
+    <body>
+        
+        <div id= 'toaster'></div>
+        <div id= 'main'></div>
+        
+        <input type ='text' placeholder='Mon Messiage' id='msg'/>
+        <input type ='text' placeholder='Mon Header' id='head'/>
+        <input type='url' placeholder='Le picture' id='url'/>
+        <button id = 'create'>Create</button>
+        <button id = 'remove'>Remove All</button>
+        <div id ='display'></div>
+        <script>
+            var createBut = document.getElementById("create");
+            var removeBut = document.getElementById('remove');
+            
+            var toast = document.getElementById("toaster");
+            
+            var msgInput = document.getElementById('msg');
+            var headInput = document.getElementById('head');
+            var urlInput = document.getElementById('url');
+            
+            var main = document.getElementById("main");
+            var controlDiv = document.getElementById("control");
+            var displayDiv = document.getElementById("display");
+            
+            createBut.onclick = function(){
+                var newObj = document.createElement("div");
+                main.appendChild(newObj);
+                newObj.style.width = '70vw';
+                newObj.style.left = '15vw';
+                newObj.style.right = '15vw';
+                newObj.style.height = '180px';
+                newObj.style.top = '120px';
+                newObj.style.position = 'relative';
+                newObj.style.backgroundColor = 'orange';
+                newObj.style.display = 'inline-block';
+                
+                var topdiv = document.createElement("div");
+                newObj.appendChild(topdiv);
+                topdiv.style.width = '85%';
+                topdiv.style.height = '50%';
+                topdiv.style.left = '15%';
+                topdiv.style.backgroundColor = 'red';
+                topdiv.style.position = 'absolute';
+                topdiv.innerHTML = headInput.value
+                
+                var botdiv = document.createElement("div");
+                newObj.appendChild(botdiv);
+                botdiv.style.width = '85%';
+                botdiv.style.top = '50%';
+                botdiv.style.height = '50%';
+                botdiv.style.left = '15%';
+                botdiv.style.backgroundColor = 'blue';
+                botdiv.style.position = 'absolute';
+                botdiv.innerHTML = msgInput.value;
+                
+                var newImg = document.createElement('img');
+                newObj.appendChild(newImg);
+                newImg.className = 'imageThumb';
+                newImg.src = url.value;
+                
+                toast.style.backgroundColor = 'cyan';
+                toast.innerHTML = 'Created A New Object';
+                
+            
+            }
+            
+             removeBut.onclick = function(){
+                main.innerHTML = "";
+                toast.style.backgroundColor = 'red';
+                toast.innerHTML = 'Deleted New Object(s)';
+                    
+                }
+            
+            
+            
+        </script>
+    </body>
+
+</html>
